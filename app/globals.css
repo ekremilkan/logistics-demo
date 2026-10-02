@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+@theme {
+  --color-asphalt: #1c1e1f;
+  --color-asphalt-2: #25282a;
+  --color-asphalt-3: #33373a;
+  --color-paper: #f2f1ec;
+  --color-paper-2: #e8e6de;
+  --color-paper-3: #dcd9ce;
+  --color-signal: #f2c230;
+  --color-signal-deep: #d9a915;
+  --color-kraft: #c49a6c;
+  --color-kraft-light: #d9b88f;
+  --color-kraft-deep: #8c6a43;
+  --color-steel: #8b8e8c;
+
+  --font-display: var(--font-archivo), "Arial Black", sans-serif;
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --ease-place: cubic-bezier(0.2, 0.7, 0.1, 1);
+
+  --breakpoint-xs: 26rem;
+}
+
+@layer base {
+  html {
+    overflow-x: clip;
+    scroll-padding-top: 4.5rem;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    overflow-x: clip;
+    background: var(--color-asphalt);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-asphalt);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+  button {
+    cursor: pointer;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@utility wrap {
+  width: 100%;
+  max-width: 92rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 3rem;
+  }
+}
+
+/* Archivo, pushed to its widest cut. */
+@utility font-expanded {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+}
+@utility font-semi-expanded {
+  font-family: var(--font-display);
+  font-stretch: 112%;
+  font-variation-settings: "wdth" 112;
+}
+
+/* Waybill / label print: mono, uppercase, airy. */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Warm, slightly lifted grade so every photo sits in the same light. */
+@utility photo-grade {
+  filter: sepia(0.14) saturate(0.88) contrast(1.06) brightness(0.97);
+}
+
+/* Diagonal ratchet-strap hatch — used once, in the footer. */
+@utility tape-hatch {
+  background-color: var(--color-signal);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-asphalt) 0 14px,
+    transparent 14px 28px
+  );
+}
+
+/* Film grain on photos — static, cheap. */
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.4  0 0 0 1.1 -0.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
+/* Kraft paper fibre for tags and labels. */
+@utility kraft-paper {
+  background-color: var(--color-kraft);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='k'><feTurbulence type='fractalNoise' baseFrequency='.55 .08' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.24  0 0 0 0 0.12  0 0 0 .32 0'/></filter><rect width='100%' height='100%' filter='url(%23k)'/></svg>");
+}
+
+@utility paper-fibre {
+  background-color: var(--color-paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='9'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.38  0 0 0 0 0.3  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Range slider styled as a tape measure. */
+.tape-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  touch-action: pan-y;
+}
+.tape-range::-webkit-slider-runnable-track {
+  height: 2px;
+  background: color-mix(in srgb, var(--color-paper) 25%, transparent);
+}
+.tape-range::-moz-range-track {
+  height: 2px;
+  background: color-mix(in srgb, var(--color-paper) 25%, transparent);
+}
+.tape-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -13px;
+  background: var(--color-signal);
+  border: 0;
+  border-radius: 0;
+  clip-path: polygon(50% 100%, 0 40%, 0 0, 100% 0, 100% 40%);
+}
+.tape-range::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  background: var(--color-signal);
+  border: 0;
+  border-radius: 0;
+  clip-path: polygon(50% 100%, 0 40%, 0 0, 100% 0, 100% 40%);
+}
+.tape-range:focus-visible {
+  outline: none;
+}
+.tape-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--color-paper);
+  outline-offset: 3px;
+}

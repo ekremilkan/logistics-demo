@@ -53,7 +53,7 @@ export function pickTruck(volume: number, rules: Rules = RULES): { truck: Truck;
 }
 
 export function crewFor(volume: number, heavyItems: number, rules: Rules = RULES): number {
-  let crew = rules.crewByVolume.find((c) => volume < c.upTo)!.crew;
+  let crew: number = rules.crewByVolume.find((c) => volume < c.upTo)!.crew;
   if (heavyItems > 0) crew = Math.max(crew, rules.heavyMinCrew);
   return Math.min(crew, rules.crewMax);
 }
