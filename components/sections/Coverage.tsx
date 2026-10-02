@@ -1,13 +1,13 @@
 "use client";
 
-import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from "framer-motion";
+import { animate, motion, useInView, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { CITIES, OUTLINE_PATH, arc, project, type CityKey } from "@/lib/geo";
 import { haversineKm } from "@/lib/estimator";
 import { RULES } from "@/lib/estimator";
 import { SectionMark } from "@/components/ui/marks";
-import { EASE_PLACE, Reveal } from "@/components/ui/motion";
+import { EASE_PLACE, Reveal, useReducedMotion } from "@/components/ui/motion";
 
 const ROUTES: { from: CityKey; to: CityKey; bow: number }[] = [
   { from: "bremen", to: "muenchen", bow: 0.16 },
@@ -50,7 +50,12 @@ function RouteLine({
   const [done, setDone] = useState(!!reduce);
 
   useEffect(() => {
-    if (!start || reduce) return;
+    if (reduce) {
+      t.set(1);
+      setDone(true);
+      return;
+    }
+    if (!start) return;
     const c = animate(t, 1, {
       duration: 1.6,
       delay: 0.3 + index * 0.45,

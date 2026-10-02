@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { Photo } from "@/components/ui/Photo";
 import { Arrow } from "@/components/ui/marks";
-import { EASE_PLACE } from "@/components/ui/motion";
+import { EASE_PLACE, useReducedMotion } from "@/components/ui/motion";
 import { ShippingLabel } from "./ShippingLabel";
 
 function BremenClock() {

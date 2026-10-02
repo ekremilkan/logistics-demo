@@ -1,11 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import type { Estimate, EstimateInput } from "@/lib/estimator";
 import { fill, useI18n } from "@/lib/i18n";
 import { Barcode, ThisSideUp } from "@/components/ui/marks";
-import { EASE_PLACE } from "@/components/ui/motion";
+import { EASE_PLACE, useReducedMotion } from "@/components/ui/motion";
 import { RollingNumber } from "./controls";
 
 export function useEstimateText(input: EstimateInput, est: Estimate) {

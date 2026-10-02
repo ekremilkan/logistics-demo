@@ -1,10 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useI18n, type Locale } from "@/lib/i18n";
 import { Arrow } from "@/components/ui/marks";
-import { EASE_PLACE } from "@/components/ui/motion";
+import { EASE_PLACE, useReducedMotion } from "@/components/ui/motion";
 
 const LINKS = ["services", "estimator", "process", "coverage", "trust", "faq", "contact"] as const;
 

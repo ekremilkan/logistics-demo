@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono, Inter_Tight } from "next/font/google";
-import { I18nProvider } from "@/lib/i18n";
+import { Providers } from "@/components/Providers";
 import de from "@/lib/i18n/de";
 import "./globals.css";
 
@@ -74,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de" className={`${archivo.variable} ${plexMono.variable} ${interTight.variable}`}>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <I18nProvider>{children}</I18nProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

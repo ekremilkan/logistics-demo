@@ -1,12 +1,12 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import type { PhotoKey } from "@/lib/images";
 import { Photo } from "@/components/ui/Photo";
 import { Arrow, SectionMark } from "@/components/ui/marks";
-import { EASE_PLACE, Reveal } from "@/components/ui/motion";
+import { EASE_PLACE, Reveal, useReducedMotion } from "@/components/ui/motion";
 
 const SERVICE_PHOTOS: PhotoKey[] = ["privateMove", "office", "packing", "assembly", "storage", "international"];
 

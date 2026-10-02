@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 import { SectionMark } from "@/components/ui/marks";
-import { CountUp, EASE_PLACE, Reveal } from "@/components/ui/motion";
+import { CountUp, EASE_PLACE, Reveal, useReducedMotion } from "@/components/ui/motion";
 
 function Stamp({ text, className = "" }: { text: string; className?: string }) {
   const reduce = useReducedMotion();

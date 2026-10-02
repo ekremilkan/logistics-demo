@@ -1,10 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useId, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { SectionMark } from "@/components/ui/marks";
-import { EASE_PLACE, Reveal } from "@/components/ui/motion";
+import { EASE_PLACE, Reveal, useReducedMotion } from "@/components/ui/motion";
 
 export function Faq() {
   const { t } = useI18n();

@@ -1,11 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { emptyInput, estimate, referenceNumber, type EstimateInput } from "@/lib/estimator";
 import { useI18n } from "@/lib/i18n";
 import { Arrow, SectionMark } from "@/components/ui/marks";
-import { EASE_PLACE, Reveal } from "@/components/ui/motion";
+import { EASE_PLACE, Reveal, useReducedMotion } from "@/components/ui/motion";
 import { LiveLabel, PriceRange, useEstimateText } from "./LiveLabel";
 import { QuoteStep, type Contact } from "./QuoteStep";
 import { DateStep, ExtrasStep, FloorsStep, RouteStep, SizeStep, TypeStep, type StepProps } from "./Steps";

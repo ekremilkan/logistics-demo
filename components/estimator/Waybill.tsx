@@ -1,10 +1,10 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { Estimate, EstimateInput } from "@/lib/estimator";
 import { useI18n } from "@/lib/i18n";
 import { Arrow, Barcode, Fragile, ThisSideUp } from "@/components/ui/marks";
-import { EASE_PLACE } from "@/components/ui/motion";
+import { EASE_PLACE, useReducedMotion } from "@/components/ui/motion";
 import type { Contact } from "./QuoteStep";
 import { PriceRange, useEstimateText } from "./LiveLabel";
 

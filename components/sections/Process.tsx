@@ -1,19 +1,12 @@
 "use client";
 
-import {
-  motion,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "framer-motion";
 import { useLayoutEffect, useRef, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import type { PhotoKey } from "@/lib/images";
 import { Photo } from "@/components/ui/Photo";
 import { SectionMark } from "@/components/ui/marks";
-import { Reveal } from "@/components/ui/motion";
+import { Reveal, useReducedMotion } from "@/components/ui/motion";
 
 const STEP_PHOTOS: PhotoKey[] = ["survey", "packing", "privateMove", "highway", "newHome"];
 
@@ -70,7 +63,7 @@ function Horizontal() {
         <div className="mt-14">
           <Heading />
         </div>
-        <ol className="no-scrollbar mt-16 grid grid-cols-5 gap-8">
+        <ol className="mt-16 flex gap-12 overflow-x-auto pb-6">
           {steps.map((s, i) => (
             <Station key={s.title} step={s} i={i} active />
           ))}
@@ -127,7 +120,7 @@ function Station({
 }) {
   const tall = i % 2 === 1;
   return (
-    <li className="relative w-[min(26rem,30vw)] shrink-0 list-none">
+    <li className="relative w-[min(26rem,30vw)] min-w-[18rem] shrink-0 list-none">
       <div className="label text-asphalt/50">Station 0{i + 1}</div>
       <div className="tnum mt-1 whitespace-nowrap font-mono text-[clamp(2.4rem,4.2vw,4.4rem)] font-medium leading-none tracking-[-0.04em]">
         {step.time}

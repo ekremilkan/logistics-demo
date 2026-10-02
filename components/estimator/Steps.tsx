@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import {
   EU_CITIES,
@@ -17,7 +17,7 @@ import {
 } from "@/lib/estimator";
 import { fill, useI18n } from "@/lib/i18n";
 import { Photo } from "@/components/ui/Photo";
-import { EASE_PLACE } from "@/components/ui/motion";
+import { EASE_PLACE, useReducedMotion } from "@/components/ui/motion";
 import { CheckBox, Segmented, Stepper } from "./controls";
 
 export type Update = (patch: (draft: EstimateInput) => void) => void;

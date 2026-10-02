@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { EASE_PLACE } from "@/components/ui/motion";
+import { motion } from "framer-motion";
+import { EASE_PLACE, useReducedMotion } from "@/components/ui/motion";
 
 /** Odometer-style number: each digit rolls to its new value. */
 export function RollingNumber({ value, className = "" }: { value: string; className?: string }) {

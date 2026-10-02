@@ -1,9 +1,20 @@
 "use client";
 
-import { animate, motion, useInView, useReducedMotion, type HTMLMotionProps } from "framer-motion";
+import { animate, motion, useInView, useReducedMotion as useFramerReducedMotion, type HTMLMotionProps } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export const EASE_PLACE = [0.2, 0.7, 0.1, 1] as const;
+
+/**
+ * Reduced-motion preference that is `false` during SSR and the first client
+ * render, so server and client markup match; the real value applies after mount.
+ */
+export function useReducedMotion(): boolean {
+  const pref = useFramerReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted ? !!pref : false;
+}
 
 /**
  * Sets an element down like a box being placed: a short rise, no overshoot.
