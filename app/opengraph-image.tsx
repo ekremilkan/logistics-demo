@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Hafenkraft — Umzüge & Transporte aus Bremen";
+export const dynamic = "force-static";
+export const alt ="Hafenkraft — Umzüge & Transporte aus Bremen";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

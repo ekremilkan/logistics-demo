@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono, Inter_Tight } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import de from "@/lib/i18n/de";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -22,17 +23,13 @@ const interTight = Inter_Tight({
   display: "swap",
 });
 
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(`${siteUrl}/`),
   title: de.meta.title,
   description: de.meta.description,
   applicationName: "Hafenkraft",
   keywords: ["Umzug Bremen", "Umzugsunternehmen", "Büroumzug", "Auslandsumzug", "Festpreis Umzug", "Moving company Germany"],
-  alternates: { canonical: "/" },
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     locale: "de_DE",
